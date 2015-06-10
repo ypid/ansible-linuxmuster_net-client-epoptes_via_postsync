@@ -1,0 +1,42 @@
+---
+
+- name: Install required packages
+  apt:
+    name: "{{ item }}"
+  with_flattened:
+    - linuxmuster_net_client_epoptes_via_postsync_packages
+
+- name: Divert original configuration under /etc
+  command: dpkg-divert --quiet --local --divert {{ item }}.dpkg-divert --rename {{ item }}
+  args:
+    creates: "{{ item }}.dpkg-divert"
+  with_items:
+    - "/etc/default/epoptes-client"
+    - "/etc/default/epoptes"
+    - "/etc/init.d/epoptes"
+
+- name: Create directory for diverts
+  file:
+    path: "/usr/local/share/dpkg-diverts"
+    state: directory
+    mode: 0750
+    owner: root
+    group: root
+
+- name: Divert original configuration under /etc
+  command: dpkg-divert --quiet --local --divert "/usr/local/share/dpkg-diverts/{{ item.file }}.dpkg-divert" --rename "{{ item.path }}/{{ item.file }}"
+  args:
+    creates: "/usr/local/share/dpkg-diverts/{{ item.file }}.dpkg-divert"
+  with_items:
+    - path: '/etc/xdg/autostart'
+      file: 'epoptes-client.desktop'
+    - path: '/usr/share/applications'
+      file: 'epoptes.desktop'
+
+- name: Remove not needed files
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - "/etc/epoptes/server.crt"
+    - "/etc/epoptes/server.key"

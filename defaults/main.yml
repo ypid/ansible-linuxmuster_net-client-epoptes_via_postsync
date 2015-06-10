@@ -1,0 +1,8 @@
+---
+
+linuxmuster_net_client_epoptes_via_postsync_packages:
+  ## Master component (server), only needed for teachers
+  - epoptes
+
+  ## Only needed for students
+  - epoptes-client
