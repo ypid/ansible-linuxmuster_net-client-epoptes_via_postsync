@@ -1,6 +1,8 @@
 ## linuxmuster_net-client-epoptes_via_postsync
 
 [![Travis CI](http://img.shields.io/travis/ypid/ansible-linuxmuster_net-client-epoptes_via_postsync.svg?style=flat)](http://travis-ci.org/ypid/ansible-linuxmuster_net-client-epoptes_via_postsync)
+[![Ansible Galaxy](http://img.shields.io/badge/galaxy-ypid.linuxmuster_net–client–epoptes_via_postsync-660198.svg?style=flat)](https://galaxy.ansible.com/list#/roles/4114)
+[![Platforms](http://img.shields.io/badge/platforms-debian%20/%20linuxmint%20/%20ubuntu-lightgrey.svg?style=flat)](#)
 
 
 Configure epoptes on a linuxmuster.net client.
@@ -15,6 +17,17 @@ The features are:
 
 The decision which role a system will play is configured via the [Postsync feature](http://www.linuxmuster.net/wiki/anwenderwiki:linbo:postsync_scripte:start) of [LINBO](https://de.wikipedia.org/wiki/LINBO).
 There is another role which configures this on the server-side. See [`ypid.linuxmuster_net-client-epoptes_via_postsync`](https://galaxy.ansible.com/list#/roles/4113).
+
+### Installation
+
+This role requires at least Ansible `v1.3`. To install it, run:
+
+    ansible-galaxy install ypid.linuxmuster_net-client-epoptes_via_postsync
+
+To install via git, run either:
+
+    git clone https://github.com/ypid/ansible-linuxmuster_net-client-epoptes_via_postsync.git ypid.linuxmuster_net-client-epoptes_via_postsync
+    git submodule add https://github.com/ypid/ansible-linuxmuster_net-client-epoptes_via_postsync.git roles/ypid.linuxmuster_net-client-epoptes_via_postsync
 
 
 

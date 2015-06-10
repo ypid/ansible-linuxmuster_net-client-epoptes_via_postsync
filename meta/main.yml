@@ -21,7 +21,7 @@ dependencies: []
 ansigenome_info:
   github_url: "https://github.com/ypid/ansible-linuxmuster_net-client-epoptes_via_postsync"
   git_branch: "master"
-  galaxy_id: ""
+  galaxy_id: "4114"
 
   travis: True
 
