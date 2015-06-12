@@ -1,8 +1,13 @@
 ---
 
-linuxmuster_net_client_epoptes_via_postsync_packages:
+linuxmuster_net_client_epoptes_packages:
   ## Master component (server), only needed for teachers
   - epoptes
 
   ## Only needed for students
   - epoptes-client
+
+linuxmuster_net_client_epoptes_mode: 'divert'
+
+## Can be used for debugging together with ypid.linuxmuster_net-server-epoptes_via_postsync against a client.
+# linuxmuster_net_client_epoptes_mode: 'remove'

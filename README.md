@@ -13,7 +13,7 @@ It is based on [the documentation at linuxmuster.net](http://www.linuxmuster.net
 The features are:
 
 * Install the client and server (master) component of epoptes.
-* Delete some configuration files to allow the usage of the client as system master system (teacher) and as client system (student).
+* Delete some configuration files to allow the usage of the client as master system (teacher) and as client system (student).
 
 The decision which role a system will play is configured via the [Postsync feature](http://www.linuxmuster.net/wiki/anwenderwiki:linbo:postsync_scripte:start) of [LINBO](https://de.wikipedia.org/wiki/LINBO).
 There is another role which configures this on the server-side. See [`ypid.linuxmuster_net-client-epoptes_via_postsync`](https://galaxy.ansible.com/list#/roles/4113).
@@ -38,12 +38,17 @@ List of default variables available in the inventory:
 
     ---
     
-    linuxmuster_net_client_epoptes_via_postsync_packages:
+    linuxmuster_net_client_epoptes_packages:
       ## Master component (server), only needed for teachers
       - epoptes
     
       ## Only needed for students
       - epoptes-client
+    
+    linuxmuster_net_client_epoptes_mode: 'divert'
+    
+    ## Can be used for debugging together with ypid.linuxmuster_net-server-epoptes_via_postsync against a client.
+    # linuxmuster_net_client_epoptes_mode: 'remove'
 
 
 
