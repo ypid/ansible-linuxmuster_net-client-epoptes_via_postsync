@@ -2,33 +2,33 @@
 
 - name: Install required packages
   apt:
-    name: "{{ item }}"
+    name: '{{ item }}'
   with_flattened:
     - linuxmuster_net_client_epoptes_packages
 
 - name: Divert original configuration under /etc
   command: dpkg-divert --quiet --local --divert {{ item }}.dpkg-divert --rename {{ item }}
   args:
-    creates: "{{ item }}.dpkg-divert"
+    creates: '{{ item }}.dpkg-divert'
   when: linuxmuster_net_client_epoptes_mode == 'divert'
   with_items:
-    - "/etc/default/epoptes-client"
-    - "/etc/default/epoptes"
-    - "/etc/init.d/epoptes"
+    - '/etc/default/epoptes-client'
+    - '/etc/default/epoptes'
+    - '/etc/init.d/epoptes'
 
 - name: Create directory for diverts
   file:
-    path: "/usr/local/share/dpkg-diverts"
-    state: directory
-    mode: 0750
-    owner: root
-    group: root
+    path: '/usr/local/share/dpkg-diverts'
+    state: 'directory'
+    mode: '0750'
+    owner: 'root'
+    group: 'root'
   when: linuxmuster_net_client_epoptes_mode == 'divert'
 
 - name: Divert original configuration
   command: dpkg-divert --quiet --local --divert "/usr/local/share/dpkg-diverts/{{ item.file }}.dpkg-divert" --rename "{{ item.path }}/{{ item.file }}"
   args:
-    creates: "/usr/local/share/dpkg-diverts/{{ item.file }}.dpkg-divert"
+    creates: '/usr/local/share/dpkg-diverts/{{ item.file }}.dpkg-divert'
   when: linuxmuster_net_client_epoptes_mode == 'divert'
   with_items:
     - path: '/etc/xdg/autostart'
@@ -50,8 +50,8 @@
 
 - name: Remove not needed files
   file:
-    path: "{{ item }}"
-    state: absent
+    path: '{{ item }}'
+    state: 'absent'
   with_items:
-    - "/etc/epoptes/server.crt"
-    - "/etc/epoptes/server.key"
+    - '/etc/epoptes/server.crt'
+    - '/etc/epoptes/server.key'
