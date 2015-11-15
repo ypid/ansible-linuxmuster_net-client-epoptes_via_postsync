@@ -47,17 +47,20 @@ List of default variables available in the inventory:
 ```YAML
 ---
 
+# List of packages to install on the remote system.
 linuxmuster_net_client_epoptes_packages:
-  ## Master component (server), only needed for teachers
+  ## Master component (server), only needed for teachers.
   - epoptes
 
-  ## Only needed for students
+  ## Only needed for students.
   - epoptes-client
 
+# Which operation should be used to remove the files which are later coped into the client systems via Postsync.
+# Choices:
+#
+# * ``divert``: Default. Uses :command:`dpkg-divert` rename the files. This operation is package management aware and thus preferred.
+# * ``remove``: Can be used for debugging together with ``ypid.linuxmuster_net-server-epoptes_via_postsync`` against a client.
 linuxmuster_net_client_epoptes_mode: 'divert'
-
-## Can be used for debugging together with ypid.linuxmuster_net-server-epoptes_via_postsync against a client.
-# linuxmuster_net_client_epoptes_mode: 'remove'
 ```
 
 
