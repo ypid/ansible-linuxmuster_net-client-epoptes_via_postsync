@@ -1,29 +1,27 @@
 ---
 
 ansigenome_info:
-  github_url: "https://github.com/ypid/ansible-linuxmuster_net-client-epoptes_via_postsync"
-  git_branch: "master"
-  galaxy_id: "4114"
+  github_url: 'https://github.com/ypid/ansible-linuxmuster_net-client-epoptes_via_postsync'
+  git_branch: 'master'
 
   travis: True
 
   license_url: 'https://tldrlegal.com/license/gnu-affero-general-public-license-v3-(agpl-3.0)'
 
   authors:
-    - name:  'Robin Schneider'
-      url: 'http://ypid.de/'
+
+    - name: 'Robin Schneider'
       email: 'ypid@riseup.net'
-      twitter: 'ypid'
       github: 'ypid'
 
   synopsis: |
     This role is intended to run against a [linuxmuster.net](https://linuxmuster.net) client and configure [epoptes](http://www.epoptes.org/).
-    It is based on [the documentation at linuxmuster.net](http://www.linuxmuster.net/wiki/anwenderwiki:linuxclient:epoptes).
+    It is based on [the documentation at linuxmuster.net](https://www.linuxmuster.net/wiki/anwenderwiki:linuxclient:epoptes).
 
     The features are:
 
-    * Install the client and server (master) component of epoptes.
+    * Install the client and server (master) component of Epoptes.
     * Delete some configuration files to allow the usage of the client as master system (teacher) and as client system (student).
 
-    The decision which role a system will play is configured via the [Postsync feature](http://www.linuxmuster.net/wiki/anwenderwiki:linbo:postsync_scripte:start) of [LINBO](https://de.wikipedia.org/wiki/LINBO).
+    The decision which role a system will play is configured via the [Postsync feature](https://www.linuxmuster.net/wiki/anwenderwiki:linbo:postsync_scripte:start) of [LINBO](https://de.wikipedia.org/wiki/LINBO).
     There is another role which configures this on the server-side. See [`ypid.linuxmuster_net-client-epoptes_via_postsync`](https://galaxy.ansible.com/list#/roles/4113).

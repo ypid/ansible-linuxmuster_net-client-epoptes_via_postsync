@@ -4,12 +4,12 @@
   apt:
     name: '{{ item }}'
   with_flattened:
-    - linuxmuster_net_client_epoptes_packages
+    - '{{ linuxmuster_net_client_epoptes_packages }}'
 
 - name: Divert original configuration under /etc
-  command: dpkg-divert --quiet --local --divert {{ item }}.dpkg-divert --rename {{ item }}
+  command: dpkg-divert --quiet --local --divert {{ (item + ".dpkg-divert") | quote }} --rename {{ item | quote }}
   args:
-    creates: '{{ item }}.dpkg-divert'
+    creates: '{{ item + ".dpkg-divert" }}'
   when: linuxmuster_net_client_epoptes_mode == 'divert'
   with_items:
     - '/etc/default/epoptes-client'
@@ -26,7 +26,7 @@
   when: linuxmuster_net_client_epoptes_mode == 'divert'
 
 - name: Divert original configuration
-  command: dpkg-divert --quiet --local --divert "/usr/local/share/dpkg-diverts/{{ item.file }}.dpkg-divert" --rename "{{ item.path }}/{{ item.file }}"
+  command: dpkg-divert --quiet --local --divert {{ "/usr/local/share/dpkg-diverts/" + item.file + ".dpkg-divert" }} --rename {{ item.path + "/" + item.file }}
   args:
     creates: '/usr/local/share/dpkg-diverts/{{ item.file }}.dpkg-divert'
   when: linuxmuster_net_client_epoptes_mode == 'divert'
@@ -38,15 +38,15 @@
 
 - name: Remove not needed files
   file:
-    path: "{{ item }}"
+    path: '{{ item }}'
     state: absent
   when: linuxmuster_net_client_epoptes_mode == 'remove'
   with_items:
-    - "/etc/xdg/autostart/epoptes-client.desktop"
-    - "/usr/share/applications/epoptes.desktop"
-    - "/etc/default/epoptes-client"
-    - "/etc/default/epoptes"
-    - "/etc/init.d/epoptes"
+    - '/etc/xdg/autostart/epoptes-client.desktop'
+    - '/usr/share/applications/epoptes.desktop'
+    - '/etc/default/epoptes-client'
+    - '/etc/default/epoptes'
+    - '/etc/init.d/epoptes'
 
 - name: Remove not needed files
   file:

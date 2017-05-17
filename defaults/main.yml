@@ -3,10 +3,10 @@
 # List of packages to install on the client system.
 linuxmuster_net_client_epoptes_packages:
   ## Master component (server), only needed for teachers.
-  - epoptes
+  - 'epoptes'
 
   ## Only needed for students.
-  - epoptes-client
+  - 'epoptes-client'
 
 # Which operation should be used to remove the files which are later coped into the client systems via Postsync.
 # Choices:
